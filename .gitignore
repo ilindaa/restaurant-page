@@ -1,0 +1,2 @@
+# ignore node_modules folder (it can get too big) dependencies that are stored there can be installed from the package.json by running npm install
+node_modules/
