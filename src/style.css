@@ -2,8 +2,34 @@
 
 * {
     font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
     background: url(./Images/yurucamp2.jpg);
+    background-size: cover;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+ul {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: flex;
+    gap: 1rem;
+    list-style-type: none;
+}
+
+li {
+    background-color: white;
+}
+
+.restaurantImg {
+    height: 25rem;
+    width: 37.5rem;
 }
