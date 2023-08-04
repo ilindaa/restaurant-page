@@ -1,5 +1,6 @@
 import './style.css';
-import { loadHeaderNav, homeLoad, setHomeActive } from './initialPageLoader';
+import { loadHeaderNav, setHomeActive } from './header';
+import { homeLoad } from './home';
 
 loadHeaderNav();
 homeLoad();
