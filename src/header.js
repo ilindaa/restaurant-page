@@ -1,4 +1,4 @@
-// Initial Page Load Function
+// Initial Page Load
 import { homeLoad } from "./home";
 import { menuLoad } from "./menu";
 import { contactLoad } from "./contact";
@@ -12,6 +12,7 @@ export function loadHeaderNav() {
     const menu = document.createElement('li');
     const contact = document.createElement('li');
 
+    header.classList.add('sticky');
     home.classList.add('homeTab');
     menu.classList.add('menuTab');
     contact.classList.add('contactTab');
