@@ -1,15 +1,30 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+:root {
+    --darkGray: #434343;
+    --gold: #f8b500;
+    --teal: #00aec1;
+    --white: #ffffff;
+}
 
 * {
-    font-family: 'Roboto', sans-serif;
+    color: var(--darkGray);
+    font-family: 'Noto Sans JP', sans-serif;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+}
 
+
+/* Background Image by Nordwood Themes on Unsplash: https://unsplash.com/photos/a-person-riding-a-snowboard-down-a-snow-covered-slope-KcsKWw77Ovw */
 body {
-    background-color: #eceee7;
+    background: url('./Images/nordwood-themes-KcsKWw77Ovw-unsplash.jpg');
+    background-size: cover;
 }
 
 /* #content's margin-top and .sticky's (class for header) height prevent overlapping */
@@ -18,7 +33,7 @@ body {
 }
 
 .sticky {
-    background-color: white;
+    background-color: var(--white);
     position: fixed;
     top: 0;
     width: 100%;
@@ -45,17 +60,22 @@ li {
 }
 
 .active {
+    color: var(--teal);
     text-decoration: underline;
     cursor: auto;
 }
 
 /* Menu (some Contact, Home) CSS */
 h1 {
+    font-weight: 900;
     padding: 2rem 0rem;
 }
 
-.menu-container > h2 {
-    font-weight: 900;
+.home-container > h1, .menu-item-container > h1 {
+    color: var(--gold);
+}
+
+.menu-item-container > h1 {
     text-decoration: underline;
     padding: 1rem;
 }
@@ -71,11 +91,18 @@ h1 {
 }
 
 .menu-item {
-    background-color: white;
-    width: 50%;
-    border-radius: 0.25rem;
+    background-color: var(--white);
     padding: 1rem;
     margin: 1rem 0rem;
+}
+
+/* Border Radius */
+.menu-item, .home-pic {
+    border-radius: 0.5rem;
+}
+
+.menu-item > p {
+    font-size: 1.15rem;
 }
 
 .menu-photo-div {
@@ -84,6 +111,16 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+}
+
+.menu-photo-div:hover img {
+    transform: scale(1.2);
+}
+
+.menu-photo, .menu-polaroid {
+    display: block;
+    transition: .3s ease-in-out;
 }
 
 .menu-photo {
@@ -95,4 +132,13 @@ h1 {
 .menu-polaroid {
     height: 70%;
     width: auto;
+}
+
+/* Divs for Beverages, Brunch, and Desserts */
+.BeveragesDiv, .BrunchDiv, .DessertsDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
 }

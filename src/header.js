@@ -45,6 +45,12 @@ function setActiveTab() {
         prev[0].className = prev[0].className.replace('active', '');
     }
     this.classList.add('active');
+
+    scrollToTop();
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 export function setHomeActive() {

@@ -37,22 +37,36 @@ const foodMenu = (() => {
     const price3 = 10.00;
 
     const menuArr = [
-        {name: 'Carol\'s Cola Float', description: 'A refreshing ice cream cola float topped with a cherry and mint leaf garnish.', price: formatter.format(price0), photo: fd0, polaroid: p0},
-        {name: 'Tuesday\'s Tapioca Milk Tea', description: 'Tuesday\'s favorite bubble tea with lots of tapioca pearls!', price: formatter.format(price0), photo: fd1, polaroid: p0},
-        {name: 'Angela\'s Durian Mango Cider', description: 'Angela\'s favorite durian drink with a tropical twist.', price: formatter.format(price0), photo: fd2, polaroid: p1},
-        {name: 'Gus\'s Bourbon Whiskey', description: '<strong>*This is an alcoholic product.</strong><br>The perfect drink for alcohol drinkers and drummers.', price: formatter.format(price1), photo: fd3, polaroid: p2},
-        {name: 'Roddy\'s Strawberry Fruit Soda', description: 'Roddy\'s as cool as his drink (literally).', price: formatter.format(price0), photo: fd4, polaroid: p3},
-        {name: 'Tao\'s Black Coffee', description: 'A stoic drink for a stoic man.', price: formatter.format(price0), photo: fd5, polaroid: p4},
-        {name: 'Dahlia\'s Rose Tea', description: 'Roses are red, violets are purple (like her hair) not blue.', price: formatter.format(price0), photo: fd6, polaroid: p5},
-        {name: 'Ertegun\'s Cherry Sparkling', description: '<strong>*This is an alcoholic product.</strong><br>For fancy alcohol drinkers and DJs.', price: formatter.format(price1), photo: fd7, polaroid: p6},
-        {name: 'Big Jump Burger', description: 'Big Jump Burger\'s \"Jumping Set\" with some fried potato slices on the side.', price: formatter.format(price2), photo: fd8, polaroid: ''},
-        {name: 'Tortilla Sandwich', description: 'Can I get the sauce for what\'s next to the tortilla sandwich?', price: formatter.format(price3), photo: fd9, polaroid: ''},
-        {name: 'Cafe Special Mars Sandwich', description: 'Martians and Earthlings will surely eat this sandwich up.', price: formatter.format(price0), photo: fd10, polaroid: ''},
-        {name: 'Anmitsu', description: 'Tuesday\'s favorite anmitsu; a cold dessert made of jelly, fruits, and ice cream.', price: formatter.format(price1), photo: fd11, polaroid: ''},
+        {name: 'Carol\'s Cola Float', description: 'A refreshing ice cream cola float topped with a cherry and mint leaf garnish.', price: formatter.format(price0), photo: fd0, polaroid: p0, type: 'Beverages'},
+        {name: 'Tuesday\'s Tapioca Milk Tea', description: 'Tuesday\'s favorite bubble tea with tapioca pearls.', price: formatter.format(price0), photo: fd1, polaroid: p0, type: 'Beverages'},
+        {name: 'Angela\'s Durian Mango Cider', description: 'Angela\'s favorite durian drink with a tropical twist.', price: formatter.format(price0), photo: fd2, polaroid: p1, type: 'Beverages'},
+        {name: 'Gus\' Bourbon Whiskey', description: '<strong>*This is an alcoholic product.</strong><br>The perfect drink for a drummer-alcoholic.', price: formatter.format(price1), photo: fd3, polaroid: p2, type: 'Beverages'},
+        {name: 'Roddy\'s Strawberry Fruit Soda', description: 'Roddy\'s cool strawberry drink for strawberry-colored hair.', price: formatter.format(price0), photo: fd4, polaroid: p3, type: 'Beverages'},
+        {name: 'Tao\'s Black Coffee', description: 'A black coffee with a nice, rich dark roast.', price: formatter.format(price0), photo: fd5, polaroid: p4, type: 'Beverages'},
+        {name: 'Dahlia\'s Rose Tea', description: 'A fragrant, rose-scented tea blend.', price: formatter.format(price0), photo: fd6, polaroid: p5, type: 'Beverages'},
+        {name: 'Ertegun\'s Cherry Sparkling', description: '<strong>*This is an alcoholic product.</strong><br>A sparkling water with alcohol drink for a DJ party-goer.', price: formatter.format(price1), photo: fd7, polaroid: p6, type: 'Beverages'},
+        {name: 'Big Jump Burger', description: 'Big Jump Burger\'s \"Jumping Set\" with some fried potato slices on the side.', price: formatter.format(price2), photo: fd8, polaroid: '', type: 'Brunch'},
+        {name: 'Tortilla Sandwich', description: 'A tortilla sandwich with a sauce to dip or pour over.', price: formatter.format(price3), photo: fd9, polaroid: '', type: 'Brunch'},
+        {name: 'Cafe Special Mars Sandwich', description: 'Martians say, \"This sandwich is out of this world.\"', price: formatter.format(price0), photo: fd10, polaroid: '', type: 'Brunch'},
+        {name: 'Anmitsu', description: 'Tuesday\'s favorite anmitsu.<br>A cold Japanese dessert made of jelly, fruits, and ice cream.', price: formatter.format(price1), photo: fd11, polaroid: '', type: 'Desserts'},
     ];
 
     return { menuArr };
 })
+
+function createFoodHeader(text) {
+    const foodHeader = document.createElement('h1');
+    const menuItemContainer = document.querySelector('.menu-item-container');
+    foodHeader.textContent = text.toUpperCase();
+    menuItemContainer.appendChild(foodHeader);
+}
+
+function createFoodDiv(type) {
+    const foodDiv = document.createElement('div');
+    const menuItemContainer = document.querySelector('.menu-item-container');
+    foodDiv.classList.add(type + 'Div');
+    menuItemContainer.appendChild(foodDiv);
+}
 
 export function menuLoad() {
     const menuTab = document.querySelector('.menuTab');
@@ -68,8 +82,15 @@ export function menuLoad() {
     content.appendChild(menuContainer);
 
     const menuName = document.createElement('h1');
-    menuName.textContent = 'Carole & Tuesday Menu';
+    menuName.textContent = 'CAROLE & TUESDAY MENU';
     menuContainer.appendChild(menuName);
+
+    const menuItemContainer = document.createElement('div');
+    menuItemContainer.classList.add('menu-item-container');
+    menuContainer.appendChild(menuItemContainer);
+
+    // Initialize the foodDiv so I can change the foodDiv
+    let foodDiv = null;
 
     for (let i = 0; i < menu.length; i++) {
         const itemDiv = document.createElement('div');
@@ -90,28 +111,29 @@ export function menuLoad() {
         itemPrice.textContent = menu[i].price;
         itemPhoto.src = menu[i].photo;
 
-        // Food Headers
+        // Create the Food Headers
         if (i === 0) {
-            const foodHeader = document.createElement('h2');
-            foodHeader.textContent = 'Beverages';
-            menuContainer.appendChild(foodHeader);
+            createFoodHeader('Beverages');
+            createFoodDiv(menu[i].type);
+            foodDiv = document.querySelector('.' + menu[i].type + 'Div');
         } else if (i === 8) {
-            const foodHeader = document.createElement('h2');
-            foodHeader.textContent = 'Brunch';
-            menuContainer.appendChild(foodHeader);
+            createFoodHeader('Brunch');
+            createFoodDiv(menu[i].type);
+            foodDiv = document.querySelector('.' + menu[i].type + 'Div');
         } else if (i === 11) {
-            const foodHeader = document.createElement('h2');
-            foodHeader.textContent = 'Desserts';
-            menuContainer.appendChild(foodHeader);
+            createFoodHeader('Desserts');
+            createFoodDiv(menu[i].type);
+            foodDiv = document.querySelector('.' + menu[i].type + 'Div');
         }
 
-        menuContainer.appendChild(itemDiv);
+        foodDiv.appendChild(itemDiv);
         itemDiv.appendChild(itemName);
         itemDiv.appendChild(itemPrice);
         itemDiv.appendChild(itemPhotoDiv);
         itemPhotoDiv.appendChild(itemPhoto);
         itemDiv.appendChild(itemDescription);
 
+        // If there is a polaroid then add it
         if (menu[i].polaroid != '') {
             itemPolaroid.src = menu[i].polaroid;
             itemPolaroid.classList.add('menu-polaroid');
