@@ -11,16 +11,21 @@ export function homeLoad() {
     const name = document.createElement('h1');
     const headline = document.createElement('h2');
     const text = document.createElement('p');
+    const link = document.createElement('a');
     const img = document.createElement('img');
+    link.classList.add('img-link');
     img.classList.add('home-pic');
 
     homeContainer.classList.add('home-container');
     name.textContent = "CAROLE & TUESDAY × CAFE"
     headline.innerHTML = "Food Images © AREA-Q.<br>Anime Images © BONES, Shinichiro Watanabe/Project CAROLE & TUESDAY."; // Replace with a quote later
-    text.textContent = "This was an anime pop-up themed collab cafe that was from August 9, 2019 to September 1, 2019 in Harajuku's AREA-Q cafe."; // Replace later
+    text.textContent = "This page was inspired by a real anime pop-up themed collab cafe from August 9, 2019 to September 1, 2019 in Harajuku's AREA-Q cafe."; // Replace later
+    link.href = "http://caroleandtuesday.com/";
+    link.target = "_blank";
     img.src = caroleTuesday;
 
     content.appendChild(homeContainer);
     homeContainer.append(name);
-    homeContainer.append(headline, img, text);
+    homeContainer.append(headline, link, text);
+    link.append(img);
 }

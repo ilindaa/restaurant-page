@@ -31,10 +31,10 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 // const for now maybe will allow change from USD to JPY prices
 const foodMenu = (() => {
-    const price0 = 7.00;
-    const price1 = 8.00;
-    const price2 = 9.00;
-    const price3 = 10.00;
+    const price0 = 6.99;
+    const price1 = 7.99;
+    const price2 = 8.99;
+    const price3 = 9.99;
 
     const menuArr = [
         {name: 'Carol\'s Cola Float', description: 'A refreshing ice cream cola float topped with a cherry and mint leaf garnish.', price: formatter.format(price0), photo: fd0, polaroid: p0, type: 'Beverages'},

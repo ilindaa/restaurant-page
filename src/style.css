@@ -20,6 +20,18 @@ html, body {
     width: 100%;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stickyLogo {
+    height: 54%;
+    width: auto;
+    position: absolute;
+    left: 0.8rem;
+}
 
 /* Background Image by Nordwood Themes on Unsplash: https://unsplash.com/photos/a-person-riding-a-snowboard-down-a-snow-covered-slope-KcsKWw77Ovw */
 body {
@@ -37,7 +49,7 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    height: 4rem;
+    height: 4.5rem;
     z-index: 1;
 }
 
@@ -75,6 +87,11 @@ h1 {
     color: var(--gold);
 }
 
+.img-link:hover, .stickyLogo:hover {
+    opacity: 0.6;
+    transition: .5s ease-in-out;
+}
+
 .menu-item-container > h1 {
     text-decoration: underline;
     padding: 1rem;
@@ -94,6 +111,7 @@ h1 {
     background-color: var(--white);
     padding: 1rem;
     margin: 1rem 0rem;
+    filter: drop-shadow(5px 5px 5px rgba(0,0,0,.05));
 }
 
 /* Border Radius */
@@ -134,6 +152,14 @@ h1 {
     width: auto;
 }
 
+.menu-polaroid, .img-link {
+    filter: drop-shadow(1px 1px 3px rgba(44, 36, 27, .35));
+}
+
+.menu-polaroid:hover, .img-link:hover {
+    filter: drop-shadow(1px 1px 6px rgba(44, 36, 27, .5));
+}
+
 /* Divs for Beverages, Brunch, and Desserts */
 .BeveragesDiv, .BrunchDiv, .DessertsDiv {
     display: flex;
@@ -141,4 +167,5 @@ h1 {
     align-items: center;
     flex-wrap: wrap;
     gap: 2rem;
+    margin-bottom: 10rem;
 }

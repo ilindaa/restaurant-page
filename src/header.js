@@ -2,6 +2,7 @@
 import { homeLoad } from "./home";
 import { menuLoad } from "./menu";
 import { contactLoad } from "./contact";
+import ctLogo from "./Images/ctLogo.png";
 
 export function loadHeaderNav() {
     const body = document.body;
@@ -11,22 +12,23 @@ export function loadHeaderNav() {
     const home = document.createElement('li');
     const menu = document.createElement('li');
     const contact = document.createElement('li');
+    const logo = document.createElement('img');
 
     header.classList.add('sticky');
     home.classList.add('homeTab');
     menu.classList.add('menuTab');
     contact.classList.add('contactTab');
+    logo.classList.add('stickyLogo');
 
     home.textContent = 'Home';
     menu.textContent = 'Menu';
     contact.textContent = 'Contact';
+    logo.src = ctLogo;
 
     body.insertBefore(header, body.firstChild);
-    header.appendChild(nav);
-    nav.appendChild(navList);
-    navList.appendChild(home);
-    navList.appendChild(menu);
-    navList.appendChild(contact);
+    header.append(logo, nav);
+    nav.append(navList);
+    navList.append(home, menu, contact);
 
     // Add event listeners
     home.addEventListener('click', homeLoad);
